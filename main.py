@@ -2,7 +2,7 @@
 Titanic Survivors analysis
 
 """
-from functions import unpack_data
+import utils as u
 
 if __name__ == '__main__':
-    unpack_data()
+    u.unpack_data()
