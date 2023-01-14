@@ -9,7 +9,8 @@ dictionary with default commands
 """
 commands = {"exit": u.exit_analysis,
             "unpack": u.unpack_data,
-            "default commands": u.read_commands
+            "default commands": u.read_commands,
+            "cleanup": u.cleanup
             }
 commands_dscr = commands["default commands"](commands_dict=commands)
 
