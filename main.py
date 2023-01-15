@@ -10,7 +10,8 @@ dictionary with default commands
 commands = {"exit": u.exit_analysis,
             "unpack": u.unpack_data,
             "default commands": u.read_commands,
-            "cleanup": u.cleanup
+            "cleanup": u.cleanup,
+            "display data": u.display_table
             }
 commands_dscr = commands["default commands"](commands_dict=commands)
 
@@ -40,8 +41,8 @@ def main():
                 else:
                     commands[run_command](run_command)
                 number_of_runs += 1
-            except Exception:
-                print("Incorrect command, please try again")
+            except Exception as e:
+                print(e)
 
 
 if __name__ == '__main__':

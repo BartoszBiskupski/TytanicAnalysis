@@ -7,14 +7,23 @@
 import os
 from zipfile import ZipFile
 from pathlib import Path
-# from classes import FileDataset
+import pandas as pd
+from tabulate import tabulate
+from utils.classes import FileDataset
+from utils.classes import DataVisualizer
+
+pd.set_option("display.max_rows", None)
+pd.set_option("display.max_columns", None)
+pd.set_option('display.expand_frame_repr', False)
+pd.set_option('display.max_colwidth', 50)
 #
 extract_path = Path("utils") / "data"
 zip_path = Path("utils") / "titanic.zip"
-# test_path = Path("utils") / "data" / "test.csv"
-#
-# test_load = FileDataset(file_path="data/train.csv")
-# print(test_load.data.head())
+# test_path = Path("utils") / "data" / "train.csv"
+
+#print(tabulate(test_load.data.head(100), headers="keys", tablefmt="psql"))
+
+
 
 
 def unpack_data(command=""):
@@ -23,9 +32,9 @@ def unpack_data(command=""):
         zf = ZipFile(zip_path)
         zf.extractall(extract_path) #save files in selected folder
         zf.close()
-        print("sucesfully unpaced")
+        print("Successfully unpacked all files")
     except Exception():
-        print("errrorororoor")
+        print("Something went wrong")
 
 
 def exit_analysis(command=""):
@@ -51,5 +60,24 @@ def cleanup(command=""):
         file_name = Path("utils") / "data" / path
         os.remove(file_name)
         print("File: {} was removed successfully".format(path))
+
+
+def display_table(command=""):
+    """Displays all data in a table format"""
+    test_load = FileDataset(file_path="utils/data/train.csv")
+    print(tabulate(test_load.data.head(100), headers="keys", tablefmt="psql"))
+
+
+def return_table(command=""):
+    test_load = FileDataset(file_path="utils/data/train.csv")
+    return test_load.data
+
+
+def display_hist(df, command=""):
+    test_scatter = DataVisualizer(df)
+    print(test_scatter.scatter())
+
+
+
 
 

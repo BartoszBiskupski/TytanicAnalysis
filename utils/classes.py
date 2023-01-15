@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
 
 
 class FileDataset():
@@ -17,5 +18,14 @@ class FileDataset():
 
     def preprocess(self):
         pass
+
+
+class DataVisualizer:
+    def __init__(self, data):
+        self.data = data
+
+    def scatter(self):
+        return self.data["Age"].hist(bins=20)
+
 
 
