@@ -1,31 +1,42 @@
 import pandas as pd
 import os
 import matplotlib.pyplot as plt
+import matplotlib
+from tabulate import tabulate
 
 
-class FileDataset():
-    def __init__(self, file_path, delimiter=","):
-        self.file_path = file_path
-        self.delimiter = delimiter
+matplotlib.rcParams['font.size'] = 10
+matplotlib.rcParams['figure.dpi'] = 100
+
+
+class FileDataset:
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
         self.data = self._load_data()
+#        self.hist = scatter
 
     def _load_data(self):
-        if os.path.splitext(self.file_path)[-1] == ".csv":
-            data = pd.read_csv(self.file_path, delimiter=self.delimiter, header=0)
+        path = self.kwargs["file_path"]
+        delim = self.kwargs["delimiter"]
+        if os.path.splitext(path)[-1] == ".csv":
+            data = pd.read_csv(path, delimiter=delim, header=0)
         else:
-            raise ValueError(f"File format not supported: {self.file_path}")
+            raise ValueError(f"File format not supported: {path}")
         return data
 
-    def preprocess(self):
-        pass
-
-
-class DataVisualizer:
-    def __init__(self, data):
-        self.data = data
-
     def scatter(self):
-        return self.data["Age"].hist(bins=20)
+        hist_attr = self.kwargs["hist_attr"]
+        ylabel = self.kwargs["ylabel"]
+        xlabel = self.kwargs["xlabel"]
+        plt.hist(self.data[hist_attr], color="blue", edgecolor="black", bins=int(45 / 1))
+        plt.xlabel(hist_attr)
+        plt.ylabel(ylabel)
+        plt.title(xlabel)
+        return plt.show()
 
+    def display_table(self, **kwargs):
+        df = self.data
+        """Displays all data in a table format"""
+        print(tabulate(df.data.head(250), headers="keys", tablefmt="psql"))
 
 
