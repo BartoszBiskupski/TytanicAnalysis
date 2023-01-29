@@ -4,6 +4,6 @@
 from utils.functions import exit_analysis
 from utils.functions import read_commands
 from utils.classes import FileDataset
-from utils.functions import cleanup
 from utils.functions import print_commands
 from utils.functions import show_hist
+from utils.functions import init_obj

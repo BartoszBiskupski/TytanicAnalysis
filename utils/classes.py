@@ -16,7 +16,7 @@ class FileDataset:
 #        self.hist = scatter
 
     def _load_data(self):
-        path = self.kwargs["file_path"]
+        path = os.path.join(*self.kwargs["file_path"])
         delim = self.kwargs["delimiter"]
         if os.path.splitext(path)[-1] == ".csv":
             data = pd.read_csv(path, delimiter=delim, header=0)

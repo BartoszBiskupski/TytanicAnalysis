@@ -45,18 +45,23 @@ def print_commands(**kwargs):
         print("{}: {}".format(key, value))
 
 
-def cleanup(**kwargs):
-    """Removes unpacked files"""
-    for path in os.listdir(extract_path):
-        file_name = Path("utils") / "data" / path
-        os.remove(file_name)
-        print("File: {} was removed successfully".format(path))
-
+# def cleanup(**kwargs):
+#     """Removes unpacked files"""
+#     for path in os.listdir(**kwargs):
+#         file_name = Path("utils") / "data" / path
+#         os.remove(file_name)
+#         print("File: {} was removed successfully".format(path))
+#
 
 def show_hist(**kwargs):
     """Displays histogram for Age category"""
     obj = FileDataset(**kwargs)
     return obj.scatter()
+
+
+def init_obj(**kwargs):
+    """Displays histogram for Age category"""
+    return FileDataset(**kwargs)
 
 
 
