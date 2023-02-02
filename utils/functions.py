@@ -12,10 +12,6 @@ import pandas as pd
 from utils.classes import FileDataset
 
 
-pd.set_option("display.max_rows", None)
-pd.set_option("display.max_columns", None)
-pd.set_option('display.expand_frame_repr', False)
-pd.set_option('display.max_colwidth', 50)
 
 
 def exit_analysis(**kwargs):
@@ -56,11 +52,16 @@ def print_commands(**kwargs):
 def show_hist(**kwargs):
     """Displays histogram for Age category"""
     obj = FileDataset(**kwargs)
-    return obj.scatter()
+    return obj.hist()
+
+
+def display_as_table(**kwargs):
+    """Display data as a table"""
+    obj = FileDataset(**kwargs)
+    return obj.display_table()
 
 
 def init_obj(**kwargs):
-    """Displays histogram for Age category"""
     return FileDataset(**kwargs)
 
 

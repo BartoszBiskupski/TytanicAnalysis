@@ -11,9 +11,10 @@ dictionary with default commands
 commands = {"exit": u.exit_analysis,
             "default commands": u.print_commands,
             "Age histogram": u.show_hist,
+            "Display as table": u.display_as_table
             }
 
-kwargs = {"file_path": ["utils", "data", "train_and_test2.csv"],
+kwargs = {"file_path": ["utils", "data", "train.csv"],
           "delimiter": ",",
           "hist_attr": "Age",
           "ylabel": "No. of passengers",
