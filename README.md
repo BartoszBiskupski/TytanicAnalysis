@@ -14,3 +14,9 @@ Następnie utwórz program z interfejsem konsolowym (CLI) do eksploracji wczytan
 
 Dodatkowe funkcjonalności programu oraz zaawansowane mechanizmy (funkcje, klasy), 
 sporządzenie opisu/dokumentacji zwiększają ocenę za realizację projektu.)
+
+Requirements: 
+Python 3.10
+Use "pip install -r requirements.txt" to install required libraries. 
+
+
