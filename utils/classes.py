@@ -27,11 +27,13 @@ class FileDataset:
         self.data = self._load_data()
 
     def _load_data(self):
+        """Loads data and renames columns to more user friendly names"""
         data = pd.read_csv(os.path.join(*self.file_path))
         data = data.rename(columns={"Age": "PassengerAge", "Pclass": "TicketClass", "SibSp": "NumberOfSiblings"})
         return data
 
     def hist(self):
+        """create histogram for passengers Age"""
         plt.hist(self.data[self.hist_attr], color="blue", edgecolor="black", bins=int(80/2))
         plt.xlabel(self.hist_attr)
         plt.ylabel(self.ylabel)
@@ -60,15 +62,18 @@ class SurvivalModel(FileDataset):
         self.model.fit(self.X_train, self.y_train)
 
     def predict(self):
+        """Returns accuracy rate for the mode"""
         y_pred = self.model.predict(self.X_test)
         accuracy = accuracy_score(self.y_test, y_pred)
         print(self.X_test)
         return accuracy
 
     def get_coefficients(self):
+        """Returns coeff rate for the mode"""
         return self.model.coef_[0]
 
     def plot_coefficients(self):
+        """generates coeff bar chart"""
         coefficients = self.get_coefficients()
         most_important_feature = self.data.columns[1:][np.argmax(coefficients)]
         plt.bar(self.data.columns[1:], coefficients)
@@ -79,6 +84,7 @@ class SurvivalModel(FileDataset):
         plt.show()
 
     def predict_proba(self, passenger_data):
+        """predicsts survivability based on user input"""
         passenger_data_df = pd.DataFrame(passenger_data, index=[0])
         passenger_data_df = passenger_data_df[self.features]
         proba = self.model.predict_proba(passenger_data_df)[0][1]
