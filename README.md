@@ -19,4 +19,5 @@ Requirements:
 Python 3.10
 Use "pip install -r requirements.txt" to install required libraries. 
 
-
+after all libraries are installed. starte the program using
+"python main.py" or "python3 main.py" depanding on your local setup.~~~~
